@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Order Receipt - Smart Look Collections</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #222;
+    }
+    .client-info, .order-summary {
+      margin-bottom: 30px;
+    }
+    .client-info p {
+      margin: 4px 0;
+      font-size: 1.1em;
+    }
+    ul#orderList {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    ul#orderList li {
+      padding: 8px 12px;
+      margin-bottom: 8px;
+      background-color: #e1e1e1;
+      border-radius: 4px;
+    }
+    .total {
+      font-weight: bold;
+      font-size: 1.2em;
+      text-align: right;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Smart Look Collections</h1>
+  <h2>Order Receipt</h2>
+
+  <section class="client-info">
+    <h3>Customer Details</h3>
+    <p><strong>Name:</strong> <span id="clientName"></span></p>
+    <p><strong>Email:</strong> <span id="clientEmail"></span></p>
+    <p><strong>Address:</strong> <span id="clientAddress"></span></p>
+  </section>
+
+  <section class="order-summary">
+    <h3>Order Summary</h3>
+    <ul id="orderList"></ul>
+    <p class="total" id="orderTotal"></p>
+  </section>
+
+  <script src="orderSubmit.js"></script>
+</body>
+</html>
