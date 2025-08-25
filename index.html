@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+Student Name: [Andile Mtolo]
+File Name: index.html
+Date: 25 August 2025
+-->
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Look Collections - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  
+  <!-- Meta viewport for responsive design -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+  <header>
+    <a href="index.html">
+      <img src="images/logo.jpg" alt="Smart Look Collections Logo" class="logo-img">
+    </a>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html" aria-current="page">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <div id="last-visit"></div>
+
+  <section class="hero">
+    <figure>
+      <img src="images/hero.jpg" alt="Hero Banner" class="hero-img">
+      <figcaption>Discover our latest collections</figcaption>
+    </figure>
+  </section>
+
+  <section class="summary">
+    <p>
+      Welcome to Smart Look Collections, a trendy private business offering fashion and lifestyle products for men and women. Our range includes elegant apparel, stylish accessories, personalized phone cases, and premium frontal weaves. We focus on current trends, quality, and affordability, making fashion accessible and inclusive.
+    </p>
+    <p>
+      Our mission is to inspire confidence, creativity, and individuality through stylish, high-quality products at reasonable prices.
+    </p>
+    <p>
+      <span class="highlight-offer">LIMITED OFFER:</span> Get 15% off your first order!
+    </p>
+  </section>
+
+  <!-- Added About Us section -->
+  <section class="about-us">
+    <h2>About Us</h2>
+    <p>
+      Smart Look Collections is dedicated to providing stylish fashion and lifestyle products for men and women. We combine elegance, quality, and affordability to bring you trendy apparel, accessories, personalized phone cases, and premium frontal weaves.
+    </p>
+    <p>
+      Our mission is to empower our customers to express their individuality and creativity through fashion while staying up-to-date with the latest trends. At Smart Look Collections, we value quality, customer satisfaction, and inclusivity.
+    </p>
+  </section>
+
+  <main>
+    <h2>Explore Our Collections</h2>
+    <p>
+      Browse our latest arrivals in the Products section and feel free to reach out via our Contact page. Whether you're styling up for a special occasion or just upgrading your daily look — Smart Look Collections has something for you.
+    </p>
+  </main>
+
+  <footer>
+    <p>
+      &#9742; <a href="tel:+27695927211">069 592 7211</a><br>
+      &#9993; <a href="mailto:mbalimkhize0119@gmail.com">mbalimkhize0119@gmail.com</a><br>
+      &copy; 2025 Smart Look Collections
+    </p>
+  </footer>
+
+  <script>
+    const lastVisitDiv = document.getElementById('last-visit');
+    const lastVisit = localStorage.getItem('lastVisit');
+    const now = new Date();
+
+    if (lastVisit) {
+      const last = new Date(lastVisit);
+      lastVisitDiv.textContent = "Your last visit was on " + last.toLocaleString();
+    } else {
+      lastVisitDiv.textContent = "Welcome! This is your first visit.";
+    }
+
+    localStorage.setItem('lastVisit', now.toISOString());
+  </script>
+
+</body>
+</html>

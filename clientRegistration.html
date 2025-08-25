@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Client Registration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+
+      /* Background logo */
+      background-image: url('logo.png'); /* Replace if needed */
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      background-attachment: fixed;
+
+      padding: 20px;
+      margin: 0;
+    }
+    form {
+      background-color: rgba(255, 255, 255, 0.95);
+      max-width: 600px;
+      margin: auto;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 4px;
+      margin-bottom: 5px;
+      font-size: 1em;
+      box-sizing: border-box;
+    }
+    .password-rules {
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 0;
+      margin-bottom: 15px;
+      padding-left: 15px;
+    }
+    .password-rules ul {
+      margin: 5px 0 0 20px;
+      padding: 0;
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+      margin-top: -10px;
+      margin-bottom: 15px;
+    }
+    button {
+      background-color: #0066cc;
+      border: none;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #004f9e;
+    }
+  </style>
+</head>
+<body>
+
+<form id="registrationForm" action="products.html" method="GET" novalidate>
+  <h2>Client Registration</h2>
+
+  <label for="firstName">First Name:</label>
+  <input id="firstName" type="text" name="firstName" required />
+
+  <label for="lastName">Last Name:</label>
+  <input id="lastName" type="text" name="lastName" required />
+
+  <label for="address">Delivery Address:</label>
+  <input id="address" type="text" name="address" required />
+
+  <label for="cardName">Preferred Name on Card:</label>
+  <input id="cardName" type="text" name="cardName" required />
+
+  <label for="cardNumber">Credit Card Number:</label>
+  <input id="cardNumber" type="text" name="cardNumber" maxlength="16" required pattern="\d{13,16}" title="Enter 13 to 16 digits" />
+
+  <label for="cardType">Bank Type (Credit Card Type):</label>
+  <select id="cardType" name="cardType" required>
+    <option value="">-- Select Bank --</option>
+    <option value="Capitec">Capitec</option>
+    <option value="Nedbank">Nedbank</option>
+    <option value="Standard Bank">Standard Bank</option>
+    <option value="TymeBank">TymeBank</option>
+    <option value="African Bank">African Bank</option>
+    <option value="Bidvest Bank">Bidvest Bank</option>
+  </select>
+
+  <label for="expiryMonth">Expiry Month (MM):</label>
+  <input id="expiryMonth" type="text" name="expiryMonth" placeholder="MM" pattern="^(0[1-9]|1[0-2])$" title="Enter a valid month (01-12)" required />
+
+  <label for="expiryYear">Expiry Year (YYYY):</label>
+  <input id="expiryYear" type="text" name="expiryYear" placeholder="YYYY" pattern="^\d{4}$" title="Enter a valid year (e.g., 2025)" required />
+
+  <label for="password">Password:</label>
+  <input id="password" type="password" name="password" required />
+
+  <div class="password-rules">
+    Password must:
+    <ul>
+      <li>Be at least 8 characters long</li>
+      <li>Contain at least one uppercase letter</li>
+      <li>Contain at least one digit</li>
+      <li>Contain at least one symbol (!, @, #, or $)</li>
+    </ul>
+  </div>
+
+  <div id="passwordError" class="error"></div>
+
+  <button type="submit">Next: Select Products</button>
+</form>
+
+<script>
+  const form = document.getElementById('registrationForm');
+  const passwordInput = document.getElementById('password');
+  const errorDiv = document.getElementById('passwordError');
+
+  form.addEventListener('submit', function(event) {
+    errorDiv.textContent = '';
+    const password = passwordInput.value;
+
+    const conditions = [
+      { test: password.length >= 8, message: 'Password must be at least 8 characters long.' },
+      { test: /[A-Z]/.test(password), message: 'Password must contain at least one uppercase letter.' },
+      { test: /\d/.test(password), message: 'Password must contain at least one digit.' },
+      { test: /[!@#$]/.test(password), message: 'Password must contain at least one symbol (!, @, #, or $).' }
+    ];
+
+    const failedCondition = conditions.find(c => !c.test);
+    if (failedCondition) {
+      event.preventDefault();
+      errorDiv.textContent = failedCondition.message;
+    }
+  });
+
+  passwordInput.addEventListener('input', () => {
+    errorDiv.textContent = '';
+  });
+</script>
+
+</body>
+</html>
+
+
+
